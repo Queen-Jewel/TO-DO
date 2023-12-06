@@ -1,7 +1,8 @@
 const addItem = document.getElementById("additem");
 const addBtn = document.getElementById("addList");
 const container = document.querySelector("#content");
-const subCon = document.querySelector('ul');
+// const subCon = document.querySelector('ul');
+const remove = document.querySelectorAll('#content ul li span .remove');
 
 const todoList = async () => {
   let url = 'http://localhost:3000/list';
@@ -28,33 +29,6 @@ const todoList = async () => {
 
   container.innerHTML = template;
 }
-// addBtn.addEventListener('click', () => {
-//     if(addItem.value.length > 0) {
-//         createNewTodoList(addItem.value);
-//         addItem.value = "";
-//     }
-// }); 
-// addItem.addEventListener('keypress',(e) => {
-//     if (e.charCode === 13 && addItem.value.length > 0) {
-//         createNewTodoList(addItem.value);
-//         addItem.value = "";
-//     }
-// })
-// let createNewTodoList = text => {
-//     let elem = document.createElement('li');
-//     elem.classList.add('flex-row');
-
-//     elem.innerHTML = `
-//     <label class="list-item">
-//     <input type="checkbox" name="todoitem" checked />
-//     <span class="checkmark"></span>
-//   <span class="text">${list.name}</span>
-//   </label>
-//   <span class="remove"></span>
-//  `;
-// }
-
-// subCon.appendChild(elem);
 
 const createList = async (e) => {
     e.preventDefault();
@@ -75,13 +49,16 @@ try {
   } catch (error) {
     console.log(error);
   }
-
-
 }
 
 
-addBtn.addEventListener('click', createList)
 
+
+addBtn.addEventListener('click', createList);
+// remove.addEventListener('click', async (e)=> {
+//     const res = await fatch('http://localhost:3000/list' + id, {
+//         method: 'DELETE'
+// });
 
 window.addEventListener('DOMContentLoaded', () => todoList());
 
