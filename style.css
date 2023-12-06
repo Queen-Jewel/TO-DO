@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body {
+  /* border: 1px solid black;
+    margin:30px 200px;
+    width: 100%;
+    max-width: 700px;
+    height: 90vh; */
+  /* display: flex; */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #ccc;
+  
+}
+
+.container {
+  width: 900px;
+  height: 600px;
+  box-shadow: 5px 4px 10px 2px rgb(160, 149, 160);
+}
+
+/* HEADER */
+header {
+    background-color: rgb(205, 183, 205);
+    border-bottom: 1px solid #ccc;
+    box-shadow: 2px 5px 10px rgb(243, 211, 224) ;
+}
+
+.to {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.search {
+    padding: 0 20px 30px 10px;
+}
+
+.search input {
+    width: 600px;
+    margin-left: 100px;
+}
+
+/* List */
+#content {
+    margin-top: 30px;
+    max-width: 700px;
+    height:450px ;
+    margin-left: 35px;
+    
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    padding: 40px 10px 0 25px;
+    min-height: 65px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+ul li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+}
+
+ul li label {
+    position: relative;
+    cursor: pointer;
+    padding: 2px 0 0 48px;
+    font-size: 1.1rem;
+    width: 30px;
+    height: 30px;
+}
+.checkmark {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+}
+
+ul li.hidden {
+    display: none;
+}
+
+ul li input[type= "checkbox"] ~ .checkmark {
+    border: 1px solid #eee;
+    border-radius: 50px;
+}
+ul li input[type= "checkbox"] ~ .checkmark:hover {
+    padding: 1px;
+    background: linear-gradient(125deg, hsl(194, 52%, 94%), rgb(205, 183, 205));
+    border: 0 ;
+}
+
+
+ul li input[type= "checkbox"]:checked ~ .checkmark {
+    background: center url(./icon-check.svg) no-repeat,
+    linear-gradient(125deg, hsl(194, 52%, 94%), rgb(205, 183, 205)) ;
+}
+ul li input[type= "checkbox"]:checked ~.text {
+    text-decoration: line-through;
+}
+
+.remove {
+    background: url(./icon-cross.svg) no-repeat ;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+
+ul li:hover .remove {
+    display: block;
+}
