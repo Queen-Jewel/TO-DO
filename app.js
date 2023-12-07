@@ -2,21 +2,20 @@ const addItem = document.getElementById("additem");
 const addBtn = document.getElementById("addList");
 const container = document.querySelector("#content");
 // const subCon = document.querySelector('ul');
-const remove = document.querySelectorAll('#content ul li span .remove');
 
 const todoList = async () => {
-  let url = 'http://localhost:3000/list';
+  let url = "http://localhost:3000/list";
 
   const list = await fetch(url);
   const lists = await list.json();
 
   console.log(lists);
 
-  let template = '';
-  lists.forEach(list => {
+  let template = "";
+  lists.forEach((list) => {
     template += `
     <ul>
-          <li class="flex-row">
+          <li class="flex-row" data-id="${list.id}">
             <label class="list-item">
               <input type="checkbox" name="todoitem" checked />
               <span class="checkmark"></span>
@@ -24,22 +23,50 @@ const todoList = async () => {
             </label>
             <span class="remove"></span>
           </li>
+          </ul>
     `;
-  })
+  });
 
   container.innerHTML = template;
-}
 
+
+  // Delete item
+  const removebtns = document.querySelectorAll(".remove");
+
+  for (let i = 0; i < removebtns.length; i++) {
+    let removebtn = removebtns[i];
+
+    removebtn.addEventListener("click", async (list) => {
+      const id = removebtn.closest('li').getAttribute('data-id');
+
+      if (id) {
+        const res = await fetch("http://localhost:3000/list/" + id, {
+          method: "DELETE",
+        });
+      } else {
+        console.log('error');
+      }
+    });
+  }
+};
+
+// removes.forEach(remove => {
+//     remove.addEventListener('click', async (e)=> {
+//         const res = await fatch('http://localhost:3000/list' + id, {
+//             method: 'DELETE'
+//     });
+//     });
+// })
 const createList = async (e) => {
-    e.preventDefault();
-const newList = addItem.value;
+  e.preventDefault();
+  const newList = addItem.value;
 
-const data = {
-    name: newList
-}
+  const data = {
+    name: newList,
+  };
 
-try {
-    const rest = await fetch('http://localhost:3000/list', {
+  try {
+    const rest = await fetch("http://localhost:3000/list", {
       method: "POST",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -49,17 +76,8 @@ try {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
+addBtn.addEventListener("click", createList);
 
-
-
-addBtn.addEventListener('click', createList);
-// remove.addEventListener('click', async (e)=> {
-//     const res = await fatch('http://localhost:3000/list' + id, {
-//         method: 'DELETE'
-// });
-
-window.addEventListener('DOMContentLoaded', () => todoList());
-
-
+window.addEventListener("DOMContentLoaded", () => todoList());
