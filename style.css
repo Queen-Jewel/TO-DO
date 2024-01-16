@@ -4,12 +4,6 @@
 }
 
 body {
-  /* border: 1px solid black;
-    margin:30px 200px;
-    width: 100%;
-    max-width: 700px;
-    height: 90vh; */
-  /* display: flex; */
   margin: 0;
   padding: 0;
   display: flex;
@@ -112,9 +106,9 @@ ul li input[type= "checkbox"]:checked ~ .checkmark {
     background: center url(./icon-check.svg) no-repeat,
     linear-gradient(125deg, hsl(194, 52%, 94%), rgb(205, 183, 205)) ;
 }
-ul li input[type= "checkbox"]:checked ~.text {
+/* ul li input[type= "checkbox"]:checked ~.text {
     text-decoration: line-through;
-}
+} */
 
 .remove {
     background: url(./icon-cross.svg) no-repeat ;

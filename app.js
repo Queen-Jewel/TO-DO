@@ -50,13 +50,6 @@ const todoList = async () => {
   }
 };
 
-// removes.forEach(remove => {
-//     remove.addEventListener('click', async (e)=> {
-//         const res = await fatch('http://localhost:3000/list' + id, {
-//             method: 'DELETE'
-//     });
-//     });
-// })
 const createList = async (e) => {
   e.preventDefault();
   const newList = addItem.value;
@@ -77,6 +70,15 @@ const createList = async (e) => {
     console.log(error);
   }
 };
+
+// Cross Text
+const text = document.getElementsByClassName("text");
+const inputText = document.getElementsByClassName("list-item");
+
+
+crossText = (text) => text.style.textDecoration = "line-through";
+
+inputText.addEventListener("Click", () => crossText());
 
 addBtn.addEventListener("click", createList);
 
