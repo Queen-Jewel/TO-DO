@@ -70,7 +70,6 @@ const createList = async (e) => {
     console.log(error);
   }
 };
-
 // Cross Text
 const text = document.getElementsByClassName("text");
 const inputText = document.getElementsByClassName("list-item");
